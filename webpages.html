@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Pages</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-repeat: no-repeat;background-size: cover; background-image:url(https://png.pngtree.com/thumb_back/fw800/background/20230703/pngtree-3d-illustration-of-graduation-diploma-and-hat-against-yellow-background-image_3750736.jpg);">
+
+    <header class="header" style="text-align: right;">
+        <a href="" class="logo">ECHOVISTA School of Sciences</a>
+        <nav class="navbar">
+            <a class="contact">Home</a>
+            <a class="contact">News</a>
+            <a class="contact">Contact Us</a>
+            <a class="contact" >About Us </a>
+        </nav>
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <div class="textbox">
+        <p id="note" style="overflow-x: scroll;overflow-y: scroll;">
+            <h3>Notification :</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🌟Embark on a Journey of Excellence at Echo Vista School of Sciences! 🌟&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            Dear Echo Vista Family, <br><br>
+
+            Welcome to a realm of limitless possibilities! At Echo Vista, we believe in fostering a vibrant and dynamic learning environment where curiosity meets knowledge, and dreams take flight. Our dedicated educators are committed to nurturing young minds, encouraging creativity, and instilling a passion for lifelong learning. <br>
+
+            As we embark on this academic odyssey together, let's embrace the spirit of collaboration, resilience, and innovation. Echo Vista is not just a school; it's a community where every student is valued, every achievement celebrated, and every challenge transformed into an opportunity.
+
+            Let's inspire, discover, and thrive—together. With enthusiasm<br> Echo Vista School Of Sciences
+
+        </p>
+    </div>
+    <div class="logn">
+        <h3>Login to your portal </h3><br><br>
+        <button class="scp" onclick="redirectToLogin('student')">Student Login</button><br><br>
+        <button class="scp" onclick="redirectToLogin('faculty')">Faculty Login</button>
+    </div>
+
+    <script>
+        function redirectToLogin(userType) {
+            if (userType === 'student') {
+                window.location.href = 'studentlagan.html'; // Update with your student login page
+            } else if (userType === 'faculty') {
+                window.location.href = 'facultylgaan.html'; // Update with your faculty login page
+            }
+        }
+    </script>
+</body>
+</html>

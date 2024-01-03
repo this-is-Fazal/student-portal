@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LOgin</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body background="w12.jpg" style="text-align: center;background-size: cover;">
+        <div class="wrapper">
+            <form action="">
+                <h1>Login</h1><br>
+                <div class="input-box">
+                   <label for="user">User name</label><input id="user" type="text" placeholder="user name" required>
+                </div>
+                <div class="input-box">
+                    <input id="password" type="password" placeholder="password" required>
+                </div>
+                <div class="remember-forget" style="position: center;">
+                    <label for="input"><input type="checkbox">Remember Me</label>
+                    <a href="#">Forgot password</a>
+                </div>
+                <input type="button" value="login" onclick="disolay()">
+                    
+                <div class="register-link"><br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <p>
+                        Dont have an account? <a href="#">Register me</a> 
+                    </p>
+                </div>
+            </form>
+        </div><button>
+            <ul>
+                <li>
+                    <a style="color: black;" href="">more</a>
+                    <ul class="dropdown" style="color: white;">
+                        <li><a href="student_data.html">Student Data</a></li>
+                        <li><a href="webpages.html">webpages</a></li>
+                        <li><a href="message.html">Message</a></li>
+                        <li><a href="buttons.html">buttons</a></li>
+                    </ul>
+                </li>
+            </ul></button>
+            <p id="p">gfgf</p>
+            <script>
+                  
+                   
+                   function disolay(y,pass){
+                    let x= document.getElementById("user").value;
+                   let y=document.getElementById("password").value;
+                   let pass='fazal';
+                  
+                   if(y=='fazal')
+                   document.alert("fazl acha bacha hai")
+                }
+            </script>
+
+    </body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Portal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.233);
+            color: #fff;
+            padding: 10px;
+            font-family: Roboto Slab;
+        }
+
+        #schoolName {
+            font-size: 35px;
+            display: flex;
+            align-items: center;
+        }
+
+        #schoolName img {
+            height: 30px;
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            background-color: #33333300;
+            color: #fff;
+            justify-content: flex-end;
+        }
+
+        .tab,
+        .tab-home {
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            padding: 10px;
+            margin-right: 20px;
+        }
+
+        .tab img,
+        .tab-home img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+
+        .tab:hover,
+        .tab-home:hover {
+            background-color: rgba(255, 255, 0, 0.418);
+        }
+
+        .content {
+            padding: 0px;
+            
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+            background-color: white;
+            border: 5px solid #000;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .tab {
+            color: black;
+        }
+
+        .tabs {
+            color: black
+        }
+
+        #uploadMarksForm {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #uploadMarksForm label,
+        #uploadMarksForm input {
+            margin-bottom: 10px;
+        }
+
+        /* Improved styling for the timetable */
+        #timetableTab table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgba(250, 250, 250, 0.616);
+            border-radius: 10px;
+            overflow: hidden;
+          
+        }
+
+        #timetableTab th,
+        #timetableTab td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #timetableTab th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .assignment-tab {
+    background-color: rgba(255, 255, 255, 0.747);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+
+}
+
+.assignment-tab table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+ 
+
+}
+
+.assignment-tab th,
+.assignment-tab td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.assignment-tab th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.assignment-tab input[type="file"] {
+    border: 5px double #000;
+    border-radius: 50px;
+    padding: 2px;
+    font-size: 20px;
+}
+
+.assignment-tab input[type="file"]:-webkit-file-upload-button{
+    background-image: linear-gradient(green,black);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* Styling for the upload and download assignment tabs */
+#uploadAssignmentTab,
+#downloadAssignmentTab {
+    background-color: rgba(233, 233, 228, 0.89);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+
+}
+
+#uploadAssignmentTab table,
+#downloadAssignmentTab table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#uploadAssignmentTab th,
+#uploadAssignmentTab td,
+#downloadAssignmentTab th,
+#downloadAssignmentTab td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#uploadAssignmentTab th,
+#downloadAssignmentTab th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Styling for the file input button */
+#uploadAssignmentTab .file-input-button,
+#downloadAssignmentTab .file-input-button {
+    border: 5px double #000;
+    border-radius: 50px;
+    padding: 2px;
+    font-size: 20px;
+}
+
+#uploadAssignmentTab .file-input-button:hover,
+#downloadAssignmentTab .file-input-button:hover {
+    background-image: linear-gradient(green,black);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+
+
+
+.customfile{
+    border: 5px double #000;
+    border-radius: 50px;
+    padding: 2px;
+    font-size: 20px;
+}
+.customfile::-webkit-file-upload-button{
+    background-image: linear-gradient(green,black);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+
+
+#uploadresulttab {
+    background-color: rgba(233, 233, 139, 0.616);
+    border-radius: 1px;
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 5px solid #000;
+}
+#uploadresulttab table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+#uploadresulttab th,
+#uploadresulttab td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#uploadresulttab th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#uploadresulttab input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#uploadresulttab button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#uploadresulttab button:hover {
+    background-color: #45a049;
+}
+
+ 
+
+
+    </style>
+   <script>
+    function showTab(tabId) {
+        var contentDivs = document.querySelectorAll('.content');
+        contentDivs.forEach(function (div) {
+            div.classList.add('hidden');
+        });
+
+        var table = document.getElementById('table');
+        var selectedContent = document.getElementById(tabId);
+        if (selectedContent) {
+            selectedContent.classList.remove('hidden');
+            table.classList.add('hidden');
+        }
+    }
+
+    // Function to upload a file
+    function uploadFile() {
+        const fileInput = document.getElementById('fileInput');
+        const fileName = fileInput.value.split('\\').pop(); // Get the filename from the path
+        const fileData = fileInput.files[0];
+
+        // Save file information to localStorage
+        localStorage.setItem('uploadedFile', JSON.stringify({ name: fileName, data: fileData }));
+
+        alert('File uploaded successfully!');
+        fileInput.value = ''; // Clear the file input
+    }
+    function uploadAssignment() {
+        const fileInput = document.getElementById('assignmentFileInput');
+        const fileName = fileInput.value.split('\\').pop(); // Get the filename from the path
+        const fileData = fileInput.files[0];
+
+        if (fileData) {
+            // Save file information to localStorage
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const fileContent = e.target.result;
+                localStorage.setItem('uploadedAssignment', JSON.stringify({ name: fileName, data: fileContent }));
+
+                // Set a flag to indicate that an assignment has been uploaded
+                localStorage.setItem('assignmentUploadedFlag', 'true');
+
+                alert(`Assignment "${fileName}" uploaded successfully!`);
+                fileInput.value = ''; // Clear the file input
+            };
+            reader.readAsDataURL(fileData);
+        } else {
+            alert('Please select a file to upload.');
+        }
+    }
+
+    // Function to fetch and display the list of available files from localStorage
+    function showFileList() {
+        const fileList = document.getElementById('fileList');
+
+        // Retrieve file information from localStorage
+        const uploadedFile = localStorage.getItem('uploadedFile');
+        if (uploadedFile) {
+            const fileData = JSON.parse(uploadedFile);
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="#" onclick="downloadFile('${fileData.name}')">${fileData.name}</a>`;
+            fileList.appendChild(listItem);
+        }
+    }
+
+    // Function to download a file
+    function downloadFile(fileName) {
+        // Fetch file data from localStorage
+        const uploadedFile = localStorage.getItem('uploadedFile');
+        if (uploadedFile) {
+            const fileData = JSON.parse(uploadedFile);
+
+            // Create a Blob and download link
+            const blob = new Blob([fileData.data]);
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+
+            // Simulate a click to trigger the download
+            link.click();
+        }
+    }
+</script>
+</head>
+
+<body background="portalg.jpg">
+
+    <div id="header">
+        <div id="schoolName">
+            <b>ECHO VISTA SCHOOL OF SCIENCES</b>
+            <img src="c1975b75a334884d2aa6c502bacb6a04-graduation-cap-cartoon.png" alt="Scholar Hat">
+        </div>
+
+        <div class="tabs">
+           
+            <div class="tab-home" >
+               <a href="webpages.html"><img src="home.png" alt="Home"></a> 
+                <br><b>Home</b>
+            </div>
+
+            
+            <div class="tab" onclick="showTab('timetableTab')">
+                <img src="timetable.png" alt="Time Table">
+                <br><b>Time Table</b>
+            </div>
+            <div class="tab" onclick="showTab('tasksTab')">
+                <img src="assignment.png" alt="Assignments">
+                <br><b>Assignments</b>
+            </div>
+            <div class="tab" onclick="showTab('notificationTab')">
+                <img src="noti.png" alt="Notification">
+                <br><b>Notification</b>
+            </div>
+            <div class="tab" onclick="showTab('quizzesTab')">
+                <img src="quiz.png" alt="Quizzes">
+                <br><b>Quizzes</b>
+            </div>
+        </div>
+    </div>
+
+    <div id="timetableTab" class="content">
+       
+        <table border='1'>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>8:30 AM - 9:50 AM</td>
+                    <td></td>
+                    <td>Circuit Theory</td>
+                    <td></td>
+                    <td></td>
+                    <td>Mechanics</td>
+                </tr>
+                <tr>
+                    <td>10:00 AM - 11:20 AM</td>
+                    <td>OOP</td>
+                    <td></td>
+                    <td>ICP</td>
+                    <td></td>
+                    <td>Functional English</td>
+                </tr>
+                <tr>
+                    <td>11:30 AM - 12:50PM</td>
+                    <td></td>
+                    <td>Thermodynamics</td>
+                    <td></td>
+                    <td>Micropocessor </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>01:00 PM - 02:20 PM</td>
+                    <td>Communication Skills</td>
+                    <td></td>
+                    <td>Calculus I</td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>02:30 PM - 03:50 PM</td>
+                    <td></td>
+                    <td>Circuit Theory</td>
+                    <td></td>
+                    <td> </td>
+                    <td>Mechanics</td>
+                </tr>
+                <tr>
+                    <td>04:00 PM - 05:20 PM</td>
+                    <td>Thermodynamics</td>
+                    <td></td>
+                    <td></td>
+                    <td> </td>
+                    <td>ICP</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="tasksTab" class="content hidden">
+      
+        <div class="assignment-tab">
+            <h2 style="text-align: center;"><u>Assignments:</u></h2>
+            <div class="tabs">
+               
+                <div style="order: -1;" class="tab" onclick="showTab('uploadAssignmentTab')">
+                    <img src="upload.png" alt="Upload Assignment">
+                    <br><b>Upload Assignment</b>
+                </div>
+                <div class="tab" onclick="showTab('downloadAssignmentTab')">
+                    <img src="download.png" alt="Download Assignment">
+                    <br><b>Download Assignment</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div  id="notificationTab" class="content hidden">
+        <h2 style="color: red;">Important Updates:</h2>
+        <p>Stay informed about the latest news and important updates for faculty members.</p>
+    
+        <!-- Update 1 -->
+        <div class="update">
+            <strong>1. Faculty Development Workshop:</strong>
+            <p>Calling all faculty members! Engage in our upcoming workshop focused on innovative teaching methods and professional development. Let's enhance our teaching skills together.</p>
+        </div>
+    
+        <!-- Update 2 -->
+        <div class="update">
+            <strong>2. New Academic Policies:</strong>
+            <p>Stay informed about the latest updates on academic policies. We've introduced some enhancements to better align with our commitment to academic excellence.</p>
+        </div>
+    
+        <!-- Update 3 -->
+        <div class="update">
+            <strong>3. Research Grant Opportunities:</strong>
+            <p>Exciting news for researchers! Explore new research grant opportunities available to faculty members. Unleash your research potential and contribute to our academic community.</p>
+        </div>
+    
+        <!-- Update 4 -->
+        <div class="update">
+            <strong>4. Faculty Meeting Schedule:</strong>
+            <p>Mark your calendars! The next faculty meeting is scheduled for 23rd June. Stay tuned for the agenda and important discussion topics.</p>
+        </div>
+    
+        <!-- Update 5 -->
+        <div class="update">
+            <strong>5. Upcoming Events:</strong>
+            <p>Get ready for upcoming events and gatherings. Join us for moments of collaboration, celebration, and camaraderie.</p>
+        </div>
+    
+        <!-- Update 6 -->
+        <div class="update">
+            <strong>6. Campus Maintenance:</strong>
+            <p>Notice: There will be scheduled maintenance on 25th June affecting Academic block II. Your cooperation is appreciated during this time.</p>
+        </div>
+    
+        <!-- Update 7 -->
+        <div class="update">
+            <strong>7. Student Feedback Session:</strong>
+            <p>We value your feedback! Participate in the upcoming student feedback session to contribute to the continuous improvement of our academic environment.</p>
+        </div>
+    
+        <!-- Update 8 -->
+        <div class="update">
+            <strong>8. Library Resources Update:</strong>
+            <p>Explore new additions to the library resources. We've expanded our collection to support your teaching and research needs.</p>
+        </div>
+    
+        <!-- Update 9 -->
+        <div class="update">
+            <strong>9. Technology Integration Workshop:</strong>
+            <p>Enhance your tech skills! Join our workshop on the integration of technology in the classroom for an interactive and engaging learning experience.</p>
+        </div>
+    
+        <!-- Update 10 -->
+        <div class="update">
+            <strong>10. Faculty Recognition:</strong>
+            <p>Congratulations to Maam Farzana for their outstanding contribution to Origanizing Foodfest. Let's celebrate the success of our faculty members!</p>
+        <div >
+            <h2>Important Updates</h2>
+            <p>Stay informed about the latest news and important updates for faculty members.</p>
+        
+            <!-- Update 1 -->
+            <div class="update">
+                <strong>1. Faculty Development Workshop:</strong>
+                <p>Calling all faculty members! Engage in our upcoming workshop focused on innovative teaching methods and professional development. Let's enhance our teaching skills together.</p>
+            </div>
+        
+            <!-- Update 2 -->
+            <div class="update">
+                <strong>2. New Academic Policies:</strong>
+                <p>Stay informed about the latest updates on academic policies. We've introduced some enhancements to better align with our commitment to academic excellence.</p>
+            </div>
+        
+            <!-- Update 3 -->
+            <div class="update">
+                <strong>3. Research Grant Opportunities:</strong>
+                <p>Exciting news for researchers! Explore new research grant opportunities available to faculty members. Unleash your research potential and contribute to our academic community.</p>
+            </div>
+        
+            <!-- Update 4 -->
+            <div class="update">
+                <strong>4. Faculty Meeting Schedule:</strong>
+                <p>Mark your calendars! The next faculty meeting is scheduled for [Date]. Stay tuned for the agenda and important discussion topics.</p>
+            </div>
+        
+            <!-- Update 5 -->
+            <div class="update">
+                <strong>5. Upcoming Events:</strong>
+                <p>Get ready for upcoming events and gatherings. Join us for moments of collaboration, celebration, and camaraderie.</p>
+            </div>
+        
+            <!-- Upcoming Events -->
+            <h2 style="color: red;">Upcoming Events:</h2>
+            <div class="event">
+                <strong>Event 1:</strong>
+                <p>Annual Faculty Picnic - 30th June</p>
+            </div>
+        
+            <div class="event">
+                <strong>Event 2:</strong>
+                <p>Guest Lecture Series - 1st July</p>
+            </div>
+        
+            <div class="event">
+                <strong>Event 3:</strong>
+                <p>Faculty Appreciation Day - 10th July</p>
+            </div>
+        
+            <div class="event">
+                <strong>Event 4:</strong>
+                <p>Workshop on Effective Communication - 20th July</p>
+            </div>
+        
+            <div class="event">
+                <strong>Event 5:</strong>
+                <p>Research Symposium - 25th July</p>
+            </div>
+        </div>
+    
+        </div>
+        
+           
+    
+
+    <div id="quizzesTab" class="content hidden">
+       
+        <h2 style="text-align: center;"><u>Quizzes:</u></h2>
+        <div class="tabs">
+            
+            <div style="order: -1;" class="tab" onclick="showTab('uploadAssignmentTab')">
+                <img src="upload.png" alt="Upload Assignment">
+                <br><b>Upload Quiz</b>
+            </div>
+            <div class="tab" onclick="showTab('downloadAssignmentTab')">
+                <img src="download.png" alt="Download Assignment">
+                <br><b>Download Quiz</b>
+            </div>
+            <div class="tab" onclick="showTab('uploadresulttab')">
+                <img src="upload.png" alt="uploadresult">
+                <br><b>Upload Marks</b>
+            </div>
+        </div>
+    </div>
+
+    <div id="uploadresulttab" class="content hidden">
+       
+
+
+        <form id="uploadMarksForm">
+            <table id="studentsTable">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Roll Number</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Jawad</b> </td>
+                        <td><b>001</b></td>
+                        <td><input type="text" id="marks1" name="marks1" required></td>
+                    </tr>
+                    <tr>
+                        <td><b>Fazal</b></td>
+                        <td><b>002</b></td>
+                        <td><input type="text" id="marks2" name="marks2" required></td>
+                    </tr>
+                    <tr>
+                        <td><b>Ahmed</b></td>
+                        <td><b>003</b></td>
+                        <td><input type="text" id="marks3" name="marks3" required></td>
+                    </tr>
+                    <tr>
+                        <td><b>Khalil</b></td>
+                        <td> <b>004</b></td>
+                        <td><input type="text" id="marks4" name="marks4" required></td>
+                    </tr>
+                    <tr>
+                        <td><b>Zikriya</b></td>
+                        <td><b>005</b></td>
+                        <td><input type="text" id="marks5" name="marks5" required></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <button type="button" onclick="submitMarks()">Submit Marks</button>
+        </form>
+    </div>
+
+    <div id="uploadAssignmentTab" class="content hidden">
+       
+        <div class="assignment-tab">
+     
+            <table border="1" style="margin-left: auto;margin-right: auto;">
+                <th>Date</th>
+                <th>Subjects</th>
+                <th>Upload</th>
+                <tr>
+                    <td>11/05/2023-14/05/2023</td>
+                    <td>OOP</td>
+                    <td>
+                        <input type="file" class="customfile" id="assignmentFileInput">
+                        <button type="button" onclick="uploadAssignment()">Upload Assignment</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>11/05/2023-14/05/2023</td>
+                    <td>EMO</td>
+                    <td>
+                        <input type="file" class="customfile" id="assignmentFileInput">
+                        <button type="button" onclick="uploadAssignment()">Upload Assignment</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>11/05/2023-14/05/2023</td>
+                    <td>P.St</td>
+                    <td>
+                        <input type="file" class="customfile" id="assignmentFileInput">
+                        <button type="button" onclick="uploadAssignment()">Upload Assignment</button>
+                    </td>
+                </tr>
+            </table>
+            <div id="uploadFileTab" class="content hidden">
+                <h2>Upload File</h2>
+                <form>
+                    <input type="file" id="fileInput" required>
+                    <button type="button" onclick="uploadFile()">Upload</button>
+                </form>
+            </div>
+    
+            <div id="downloadFileTab" class="content hidden">
+                <h2>Download File</h2>
+                <ul id="fileList"></ul>
+            </div>
+        </div>
+
+
+
+        </div>
+    </div>
+
+    <div id="downloadAssignmentTab" class="content hidden">
+      
+        <table border="1"  style="margin-left: auto;margin-right: auto;"><th>Date</th><th>Subjects</th><th>Download</th>
+            <tr><td>11/05/2023-14/05/2023</td><td>OOP</td><td><input type="file" class="customfile"></td></tr>
+            <tr><td>11/05/2023-14/05/2023</td><td> EMO</td><td><input type="file" class="customfile"></td></tr>
+            <tr><td>11/05/2023-14/05/2023</td><td> P.St</td><td><input type="file" class="customfile"></td></tr></table>
+        </div>
+
+
+    <div id="homeTab" class="content hidden">
+      
+        <h2>Welcome to Echo Vista School of Sciences!</h2>
+        <p>Explore the world of education and excellence.</p>
+    </div>
+
+</body>
+
+</html>

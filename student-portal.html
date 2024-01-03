@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <link rel="icon" href="c1975b75a334884d2aa6c502bacb6a04-graduation-cap-cartoon.png" type="image/gif/png"> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.233);
+            color: #fff;
+            padding: 10px;
+            font-family:Roboto Slab;
+            
+        }
+
+        #schoolName {
+            font-size: 35px;
+            display: flex;
+            align-items: center;
+           
+        }
+
+        #schoolName img {
+            height: 30px;
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0);
+            color: #fff;
+            justify-content: flex-end;
+        }
+
+        .tab {
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            padding: 10px;
+            margin-right: 20px;
+            color: black;
+            font-weight:heavy;
+        }
+
+        .tab img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+
+        .tab:hover {
+            background-color: #ffe92162;
+            border-radius: 10px;
+        }
+
+        .content {
+            padding: 20px;
+           
+        }
+
+        .hidden {
+            display: none;
+        }
+        .table{
+           text-align: center;
+            margin-right: auto;margin-left:auto;
+
+        }
+        .heading{
+            text-align: center;
+            text-decoration: underline;
+        }
+        
+#resultTab table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto; 
+}
+
+
+#resultTab table th {
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px;
+}
+
+
+#resultTab table td {
+    padding: 10px;
+    text-align: center;
+}
+
+
+#resultTab table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+#resultTab {
+    background-color: rgba(255, 255, 0, 0.5);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 40px;
+    border: 2px solid black;
+    float: left;
+    width: 70%;
+}
+
+
+#resultTab.hidden {
+    display: none;
+}
+#timetableTab table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgb(233, 233, 230);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 5px solid black;
+        }
+
+        #timetableTab th,
+        #timetableTab td {
+            border: 1px solid #000000;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #timetableTab th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .assignment-tab {
+    background-color: rgba(233, 233, 139, 0.616);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 5px solid black;
+}
+
+.assignment-tab table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.assignment-tab th,
+.assignment-tab td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.assignment-tab th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.assignment-tab input[type="file"] {
+    border: 5px double #000;
+    border-radius: 50px;
+    padding: 2px;
+    font-size: 20px;
+}
+
+.assignment-tab input[type="file"]:-webkit-file-upload-button{
+    background-image: linear-gradient(green,black);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+
+#uploadAssignmentTab,
+#downloadAssignmentTab {
+    background-color: rgba(233, 233, 139, 0.616);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#uploadAssignmentTab table,
+#downloadAssignmentTab table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#uploadAssignmentTab th,
+#uploadAssignmentTab td,
+#downloadAssignmentTab th,
+#downloadAssignmentTab td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#uploadAssignmentTab th,
+#downloadAssignmentTab th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+#uploadAssignmentTab .file-input-button,
+#downloadAssignmentTab .file-input-button {
+    border: 5px double #000;
+    border-radius: 50px;
+    padding: 2px;
+    font-size: 20px;
+}
+
+#uploadAssignmentTab .file-input-button:hover,
+#downloadAssignmentTab .file-input-button:hover {
+    background-image: linear-gradient(green,black);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+
+
+
+.customfile{
+    border: 5px double #000;
+    border-radius: 50px;
+    padding: 2px;
+    font-size: 20px;
+}
+.customfile::-webkit-file-upload-button{
+    background-image: linear-gradient(green,black);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+
+
+#uploadresulttab {
+    background-color: rgba(233, 233, 139, 0.616);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#uploadresulttab table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+#uploadresulttab th,
+#uploadresulttab td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#uploadresulttab th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#uploadresulttab input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#uploadresulttab button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#uploadresulttab button:hover {
+    background-color: #45a049;}
+
+#table {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 5px solid black;
+    border: 5px solid black;
+}
+
+#table h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 5px solid black;
+}
+
+#table th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#table td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+#table .trow:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#table .trow:hover {
+    background-color: #e0f7fa;
+    transition: background-color 0.3s;
+}
+#tasksTab {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 5px solid black;
+            float: left;
+        }
+
+        #tasksTab h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #tasksTab table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #tasksTab th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #tasksTab td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center; 
+        }
+
+        #tasksTab tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #tasksTab input[type="file"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #tasksTab tr:hover {
+            background-color: #e0f7fa; 
+            transition: background-color 0.3s;
+        }
+
+        .card {
+ width: 190px;
+ height: 254px;
+ padding: .8em;
+ background: #f5f5f5;
+ position: relative;
+ overflow: visible;
+ box-shadow: 0 1px 3px rgb(214, 210, 210), 0 1px 2px rgb(202, 198, 198);
+ margin: 2%;
+
+float: left;
+border-radius: 10px;
+
+}
+
+.card-img {
+ background-color: #ffcaa6;
+ background-image: url(fazal.jpg);
+ background-size: cover;
+ height: 40%;
+ width: 100%;
+ border-radius: .5rem;
+ transition: .3s ease;
+}
+
+.card-info {
+ padding-top: 10%;
+}
+
+svg {
+ width: 20px;
+ height: 20px;
+}
+
+.card-footer {
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding-top: 10px;
+ border-top: 1px solid #ddd;
+}
+
+.text-title {
+ font-weight: 900;
+ font-size: 1.2em;
+ line-height: 1.5;
+}
+
+.text-body {
+ font-size: .9em;
+ padding-bottom: 10px;
+}
+
+.card-button {
+ border: 1px solid #252525;
+ display: flex;
+ padding: .3em;
+ cursor: pointer;
+ border-radius: 50px;
+ transition: .3s ease-in-out;
+}
+
+.card-img:hover {
+ transform: translateY(-25%);
+ box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+}
+
+.card-button:hover {
+ border: 1px solid #ffcaa6;
+ background-color: #ffcaa6;
+}
+#feestab{
+border: 3px solid white;
+
+
+}
+    </style>
+     <script>
+        function showTab(tabId) {
+            var contentDivs = document.querySelectorAll('.content');
+            contentDivs.forEach(function (div) {
+                div.classList.add('hidden');
+            });
+
+            var table = document.getElementById('table');
+            var selectedContent = document.getElementById(tabId);
+            if (selectedContent) {
+                selectedContent.classList.remove('hidden');
+                table.classList.add('hidden');
+            }
+        }
+
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const fileName = fileInput.value.split('\\').pop();
+            const fileData = fileInput.files[0];
+
+           
+            localStorage.setItem('uploadedFile', JSON.stringify({ name: fileName, data: fileData }));
+
+            alert('File uploaded successfully!');
+            fileInput.value = ''; 
+        }
+
+        function showFileList() {
+            const fileList = document.getElementById('fileList');
+
+            const uploadedFile = localStorage.getItem('uploadedFile');
+            if (uploadedFile) {
+                const fileData = JSON.parse(uploadedFile);
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<a href="#" onclick="downloadFile('${fileData.name}')">${fileData.name}</a>`;
+                fileList.appendChild(listItem);
+            }
+        }
+        window.addEventListener('assignmentUploaded', function () {
+    downloadAssignment('downloaded_assignment.docx');
+});
+
+function downloadAssignment(fileName) {
+        const assignmentUploadedFlag = localStorage.getItem('assignmentUploadedFlag');
+
+        if (assignmentUploadedFlag === 'true') {
+            const uploadedAssignment = localStorage.getItem('uploadedAssignment');
+
+            if (uploadedAssignment) {
+                const assignmentData = JSON.parse(uploadedAssignment);
+
+                const byteCharacters = atob(assignmentData.data.split(',')[1]);
+                const byteNumbers = new Array(byteCharacters.length);
+                for (let i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                const byteArray = new Uint8Array(byteNumbers);
+                const blob = new Blob([byteArray], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = fileName;
+
+                link.click();
+
+                localStorage.setItem('assignmentUploadedFlag', 'false');
+            } else {
+                alert('No assignment file found in local storage.');
+            }
+        } else {
+            alert('No assignment has been uploaded.');
+        }
+    }
+
+
+        function downloadFile(fileName) {
+            const uploadedFile = localStorage.getItem('uploadedFile');
+            if (uploadedFile) {
+                const fileData = JSON.parse(uploadedFile);
+
+                const blob = new Blob([fileData.data]);
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = fileName;
+
+                link.click();
+            }
+        }
+    </script>
+</head>
+<body   style="background-size: cover; background-image: url(portalg.jpg);">
+
+    <div id="header">
+        <div id="schoolName" >
+            ECHO VISTA SCHOOL OF SCIENCES
+            <img src="c1975b75a334884d2aa6c502bacb6a04-graduation-cap-cartoon.png" alt="Scholar Hat">
+        </div>
+
+        <div class="tabs">
+            <div class="tab">
+                <a href="webpages.html"><img src="home.png" alt="Time Table"></a>
+                <br>Home
+            </div>
+            <div class="tab" onclick="showTab('timetableTab')">
+                <img src="timetable.png" alt="Assignments">
+                <br>Time Table
+            </div>
+            <div class="tab" onclick="showTab('tasksTab')">
+                <img src="assignment.png" alt="Notification">
+                <br>Tasks
+            </div>
+            <div class="tab" onclick="showTab('feesTab')">
+                <img src="fees.png" alt="Quizzes">
+                <br>Fees
+            </div>
+            <div class="tab" onclick="showTab('resultTab')">
+                <img src="result.png" alt="Quizzes">
+                <br>Result
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-img"></div>
+        <div class="card-info">
+          <p class="text-title">Fazal-e-Abbas</p>
+          <p class="text-body">Sp23-BEL-017</p>
+        </div>
+       </div>
+     
+        <div class="table" id="table">
+            <h2 style="text-align: center;"><u style="text-align: center;">Courses</u></h2>
+            <table border="2" style="margin-left: auto;margin-right: auto;">
+                <th class="thead">Sr#</th>
+                <th class="thead">Subjects</th>
+                <th class="thead">Teachers</th>
+                <th class="thead">credits</th>
+                <tr class="trow">
+                    <td>1</td>
+                    <td>Pak-Studies</td>
+                    <td>Munaza Shaheen</td>
+                    <td>3</td>
+                </tr>
+                <tr class="trow">
+                    <td>2</td>
+                    <td>Object Oriented</td>
+                    <td>Farzana Shaheen</td>
+                    <td>4</td>
+                </tr>
+                <tr class="trow">
+                <td>3</td>
+                <td>Physics</td>
+                <td>Tahir Nazir</td>
+                <td>4</td>
+                </tr>
+                <tr class="trow">
+                    <td>4</td>
+                    <td>English</td>
+                    <td>Sobia Yaqoob</td>
+                    <td>3</td>
+                </tr>
+                <tr class="trow">
+                    <td>5</td>
+                    <td>Calculus</td>
+                    <td>Junaid Anjum</td>
+                    <td>3</td>
+                </tr>
+            </table>
+          </div>
+
+          <div id="tasksTab" class="content hidden">
+            <h2 style="text-align: center;">Assignments</h2>
+            <table border="1" style="margin-left: auto; margin-right: auto;">
+                <th>Date</th>
+                <th>Subjects</th>
+                <th>Download</th>
+                <th>Upload</th>
+                <tr>
+                    <td>11/05/2023-14/05/2023</td>
+                    <td>OOP</td>
+                    <td><a href="#" onclick="downloadAssignment('OOP_assignment.pdf')">Download</a></td>
+                    <td><input type="file"></td>
+                </tr>
+                <tr>
+                    <td>11/05/2023-14/05/2023</td>
+                    <td>EMO</td>
+                    <td><a href="#" onclick="downloadAssignment('EMO_assignment.pdf')">Download</a></td>
+                    <td><input type="file"></td>
+                </tr>
+                <tr>
+                    <td>11/05/2023-14/05/2023</td>
+                    <td>P.St</td>
+                    <td><a href="#" onclick="downloadAssignment('PSt_assignment.pdf')">Download</a></td>
+                    <td><input type="file"></td>
+                </tr>
+            </table>
+        </div>
+
+    <div id="uploadFileTab" class="content hidden">
+        <h2>Upload File</h2>
+        <form>
+            <input type="file" id="fileInput" required>
+            <button type="button" onclick="uploadFile()">Upload</button>
+        </form>
+    </div>
+
+    <div id="downloadFileTab" class="content hidden">
+        <h2>Download File</h2>
+        <ul id="fileList"></ul>
+    </div>
+</div>
+
+    <div id="notificationTab" class="content hidden">
+        <h2>Notifications</h2>
+        <p>Check the latest notifications here.</p>
+        <p id="note"></p>
+    </div>
+
+    <div id='timetableTab' class="content hidden">
+        
+        <table border='1' class="table">
+
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>8:30 AM - 9:50 AM</td>
+                    <td></td>
+                    <td>Circuit Theory</td>
+                    <td></td>
+                    <td></td>
+                    <td>Mechanics</td>
+                </tr>
+                <tr>
+                    <td>10:00 AM - 11:20 AM</td>
+                    <td>OOP</td>
+                    <td></td>
+                    <td>ICP</td>
+                    <td></td>
+                    <td>Functional English</td>
+                </tr>
+                <tr>
+                    <td>11:30 AM - 12:50PM</td>
+                    <td></td>
+                    <td>Thermodynamics</td>
+                    <td></td>
+                    <td>Micropocessor </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>01:00 PM - 02:20 PM</td>
+                    <td>Communication Skills</td>
+                    <td></td>
+                    <td>Calculus I</td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>02:30 PM - 03:50 PM</td>
+                    <td></td>
+                    <td>Circuit Theory</td>
+                    <td></td>
+                    <td> </td>
+                    <td>Mechanics</td>
+                </tr>
+                <tr>
+                    <td>04:00 PM - 05:20 PM</td>
+                    <td>Thermodynamics</td>
+                    <td></td>
+                    <td></td>
+                    <td> </td>
+                    <td>ICP</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div id='feesTab' class="content hidden">
+        <iframe src="example.pdf" width="80%" height="600px" style="border: none;"></iframe>
+    </div>
+
+    <div id='resultTab' class="content hidden">
+        <table border="1"  style="margin-left: auto;margin-right: auto;"><th>Subjects</th><th>Total</th><th>Obtained</th><th>Grade</th>
+            <tr><td>OOP</td><td>80</td><td>50</td><td>B</td></tr>
+            <tr><td>EMO</td><td>80</td><td>70</td><td>A</td></tr>
+            <tr><td>English</td><td>80</td><td>40</td><td>D</td></tr>
+            <tr><td>Calculus</td><td>80</td><td>40</td><td>D</td></tr>
+            <tr><td>Pak.ST</td><td>80</td><td>40</td><td>D</td></tr>
+        </table>
+    </div>
+    <div id="uploadFileTab" class="content hidden">
+        <h2>Upload File</h2>
+        <form id="fileUploadForm" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" required>
+            <button type="button" onclick="uploadFile()">Upload</button>
+        </form>
+    </div>
+
+    <div id="downloadFileTab" class="content hidden">
+        <h2>Download File</h2>
+        <ul id="fileList"></ul>
+    </div>
+</div>
+
+
+</body>
+</html>
