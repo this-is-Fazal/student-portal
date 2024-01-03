@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,8 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            background-image: url(classroom.jpg);
+            background-size: cover;
         }
 
         #header {
@@ -26,7 +29,7 @@
         }
 
         #schoolName {
-            font-size: 35px;
+            font-size: 24px;
             display: flex;
             align-items: center;
         }
@@ -98,7 +101,6 @@
             margin-bottom: 10px;
         }
 
-        /* Improved styling for the timetable */
         #timetableTab table {
             width: 100%;
             border-collapse: collapse;
@@ -167,7 +169,6 @@
     cursor: pointer;
 }
 
-/* Styling for the upload and download assignment tabs */
 #uploadAssignmentTab,
 #downloadAssignmentTab {
     background-color: rgba(233, 233, 228, 0.89);
@@ -202,7 +203,6 @@
     color: white;
 }
 
-/* Styling for the file input button */
 #uploadAssignmentTab .file-input-button,
 #downloadAssignmentTab .file-input-button {
     border: 5px double #000;
@@ -313,35 +313,31 @@
         }
     }
 
-    // Function to upload a file
     function uploadFile() {
         const fileInput = document.getElementById('fileInput');
-        const fileName = fileInput.value.split('\\').pop(); // Get the filename from the path
+        const fileName = fileInput.value.split('\\').pop(); 
         const fileData = fileInput.files[0];
 
-        // Save file information to localStorage
         localStorage.setItem('uploadedFile', JSON.stringify({ name: fileName, data: fileData }));
 
         alert('File uploaded successfully!');
-        fileInput.value = ''; // Clear the file input
+        fileInput.value = ''; 
     }
     function uploadAssignment() {
         const fileInput = document.getElementById('assignmentFileInput');
-        const fileName = fileInput.value.split('\\').pop(); // Get the filename from the path
+        const fileName = fileInput.value.split('\\').pop(); 
         const fileData = fileInput.files[0];
 
         if (fileData) {
-            // Save file information to localStorage
             const reader = new FileReader();
             reader.onload = function (e) {
                 const fileContent = e.target.result;
                 localStorage.setItem('uploadedAssignment', JSON.stringify({ name: fileName, data: fileContent }));
 
-                // Set a flag to indicate that an assignment has been uploaded
                 localStorage.setItem('assignmentUploadedFlag', 'true');
 
                 alert(`Assignment "${fileName}" uploaded successfully!`);
-                fileInput.value = ''; // Clear the file input
+                fileInput.value = ''; 
             };
             reader.readAsDataURL(fileData);
         } else {
@@ -349,11 +345,9 @@
         }
     }
 
-    // Function to fetch and display the list of available files from localStorage
     function showFileList() {
         const fileList = document.getElementById('fileList');
 
-        // Retrieve file information from localStorage
         const uploadedFile = localStorage.getItem('uploadedFile');
         if (uploadedFile) {
             const fileData = JSON.parse(uploadedFile);
@@ -363,27 +357,23 @@
         }
     }
 
-    // Function to download a file
     function downloadFile(fileName) {
-        // Fetch file data from localStorage
         const uploadedFile = localStorage.getItem('uploadedFile');
         if (uploadedFile) {
             const fileData = JSON.parse(uploadedFile);
 
-            // Create a Blob and download link
             const blob = new Blob([fileData.data]);
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
             link.download = fileName;
 
-            // Simulate a click to trigger the download
             link.click();
         }
     }
 </script>
 </head>
 
-<body background="portalg.jpg">
+<body background="classroom.jpg">
 
     <div id="header">
         <div id="schoolName">
@@ -394,7 +384,7 @@
         <div class="tabs">
            
             <div class="tab-home" >
-               <a href="index.html"><img src="home.png" alt="Home"></a> 
+               <a href="webpages.html"><img src="home.png" alt="Home"></a> 
                 <br><b>Home</b>
             </div>
 
@@ -502,133 +492,86 @@
         </div>
     </div>
 
-    <div  id="notificationTab" class="content hidden">
-        <h2 style="color: red;">Important Updates:</h2>
+    <div id="notificationTab" class="content hidden">
+        <h2 style="color: red;"><u>Important Updates</u></h2>
         <p>Stay informed about the latest news and important updates for faculty members.</p>
     
-        <!-- Update 1 -->
         <div class="update">
             <strong>1. Faculty Development Workshop:</strong>
             <p>Calling all faculty members! Engage in our upcoming workshop focused on innovative teaching methods and professional development. Let's enhance our teaching skills together.</p>
         </div>
     
-        <!-- Update 2 -->
         <div class="update">
             <strong>2. New Academic Policies:</strong>
             <p>Stay informed about the latest updates on academic policies. We've introduced some enhancements to better align with our commitment to academic excellence.</p>
         </div>
     
-        <!-- Update 3 -->
         <div class="update">
             <strong>3. Research Grant Opportunities:</strong>
             <p>Exciting news for researchers! Explore new research grant opportunities available to faculty members. Unleash your research potential and contribute to our academic community.</p>
         </div>
     
-        <!-- Update 4 -->
         <div class="update">
             <strong>4. Faculty Meeting Schedule:</strong>
             <p>Mark your calendars! The next faculty meeting is scheduled for 23rd June. Stay tuned for the agenda and important discussion topics.</p>
         </div>
     
-        <!-- Update 5 -->
         <div class="update">
             <strong>5. Upcoming Events:</strong>
             <p>Get ready for upcoming events and gatherings. Join us for moments of collaboration, celebration, and camaraderie.</p>
         </div>
     
-        <!-- Update 6 -->
         <div class="update">
             <strong>6. Campus Maintenance:</strong>
-            <p>Notice: There will be scheduled maintenance on 25th June affecting Academic block II. Your cooperation is appreciated during this time.</p>
+            <p>Notice: There will be scheduled maintenance on 25th June affecting EE lawn. Your cooperation is appreciated during this time.</p>
         </div>
     
-        <!-- Update 7 -->
         <div class="update">
             <strong>7. Student Feedback Session:</strong>
             <p>We value your feedback! Participate in the upcoming student feedback session to contribute to the continuous improvement of our academic environment.</p>
         </div>
     
-        <!-- Update 8 -->
         <div class="update">
             <strong>8. Library Resources Update:</strong>
             <p>Explore new additions to the library resources. We've expanded our collection to support your teaching and research needs.</p>
         </div>
     
-        <!-- Update 9 -->
         <div class="update">
             <strong>9. Technology Integration Workshop:</strong>
             <p>Enhance your tech skills! Join our workshop on the integration of technology in the classroom for an interactive and engaging learning experience.</p>
         </div>
     
-        <!-- Update 10 -->
         <div class="update">
             <strong>10. Faculty Recognition:</strong>
-            <p>Congratulations to Maam Farzana for their outstanding contribution to Origanizing Foodfest. Let's celebrate the success of our faculty members!</p>
-        <div >
-            <h2>Important Updates</h2>
-            <p>Stay informed about the latest news and important updates for faculty members.</p>
-        
-            <!-- Update 1 -->
-            <div class="update">
-                <strong>1. Faculty Development Workshop:</strong>
-                <p>Calling all faculty members! Engage in our upcoming workshop focused on innovative teaching methods and professional development. Let's enhance our teaching skills together.</p>
-            </div>
-        
-            <!-- Update 2 -->
-            <div class="update">
-                <strong>2. New Academic Policies:</strong>
-                <p>Stay informed about the latest updates on academic policies. We've introduced some enhancements to better align with our commitment to academic excellence.</p>
-            </div>
-        
-            <!-- Update 3 -->
-            <div class="update">
-                <strong>3. Research Grant Opportunities:</strong>
-                <p>Exciting news for researchers! Explore new research grant opportunities available to faculty members. Unleash your research potential and contribute to our academic community.</p>
-            </div>
-        
-            <!-- Update 4 -->
-            <div class="update">
-                <strong>4. Faculty Meeting Schedule:</strong>
-                <p>Mark your calendars! The next faculty meeting is scheduled for [Date]. Stay tuned for the agenda and important discussion topics.</p>
-            </div>
-        
-            <!-- Update 5 -->
-            <div class="update">
-                <strong>5. Upcoming Events:</strong>
-                <p>Get ready for upcoming events and gatherings. Join us for moments of collaboration, celebration, and camaraderie.</p>
-            </div>
-        
-            <!-- Upcoming Events -->
-            <h2 style="color: red;">Upcoming Events:</h2>
-            <div class="event">
-                <strong>Event 1:</strong>
-                <p>Annual Faculty Picnic - 30th June</p>
-            </div>
-        
-            <div class="event">
-                <strong>Event 2:</strong>
-                <p>Guest Lecture Series - 1st July</p>
-            </div>
-        
-            <div class="event">
-                <strong>Event 3:</strong>
-                <p>Faculty Appreciation Day - 10th July</p>
-            </div>
-        
-            <div class="event">
-                <strong>Event 4:</strong>
-                <p>Workshop on Effective Communication - 20th July</p>
-            </div>
-        
-            <div class="event">
-                <strong>Event 5:</strong>
-                <p>Research Symposium - 25th July</p>
-            </div>
+            <p>Congratulations to Dr.Farzana for their outstanding contribution to Expo 2024. Let's celebrate the success of our faculty members!</p>
+        </div>
+        <h2 style="color: red;"><u>Upcoming Events</u></h2>
+        <div class="event">
+            <strong>Event 1:</strong>
+            <p>Annual Faculty Picnic - 30th June</p>
         </div>
     
+        <div class="event">
+            <strong>Event 2:</strong>
+            <p>Guest Lecture Series - 2nd July</p>
         </div>
-        
-           
+    
+        <div class="event">
+            <strong>Event 3:</strong>
+            <p>Faculty Appreciation Day - 10th July</p>
+        </div>
+    
+        <div class="event">
+            <strong>Event 4:</strong>
+            <p>Workshop on Effective Communication - 20th July</p>
+        </div>
+    
+        <div class="event">
+            <strong>Event 5:</strong>
+            <p>Research Symposium - 25th July</p>
+        </div>
+    </div>
+    </div>
     
 
     <div id="quizzesTab" class="content hidden">
